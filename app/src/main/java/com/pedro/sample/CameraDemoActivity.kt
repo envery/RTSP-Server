@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.pedro.encoder.input.video.CameraOpenException
 import com.pedro.rtplibrary.view.OpenGlView
+import com.pedro.rtsp.rtsp.VideoCodec
 import com.pedro.rtsp.utils.ConnectCheckerRtsp
 import com.pedro.rtspserver.RtspServerCamera2
 import kotlinx.android.synthetic.main.activity_camera_demo.*
@@ -30,6 +31,7 @@ class CameraDemoActivity : AppCompatActivity(), ConnectCheckerRtsp, View.OnClick
   private lateinit var folder: File
 
   private var openGlView: OpenGlView? = null
+  private var videoCodecH = VideoCodec.H265
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -48,6 +50,7 @@ class CameraDemoActivity : AppCompatActivity(), ConnectCheckerRtsp, View.OnClick
     surfaceView.holder.addCallback(this)
 
     rtspServerCamera2.disableAudio()
+    rtspServerCamera2.setVideoCodec(videoCodecH)
     rtspServerCamera2.prepareVideo(1920, 1080, 30,4000*1024,0)
 
 
