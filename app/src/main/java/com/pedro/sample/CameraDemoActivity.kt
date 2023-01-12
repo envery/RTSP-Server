@@ -39,6 +39,9 @@ class CameraDemoActivity : AppCompatActivity(), ConnectCheckerRtsp, View.OnClick
     switch_camera.setOnClickListener(this)
     rtspServerCamera1 = RtspServerCamera1(surfaceView, this, 1935)
     surfaceView.holder.addCallback(this)
+
+    rtspServerCamera1.enableVideoStabilization()
+
   }
 
   override fun onNewBitrateRtsp(bitrate: Long) {
